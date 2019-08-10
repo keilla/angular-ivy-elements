@@ -1,0 +1,44 @@
+@import './settings.scss';
+
+.comment-card {
+  border: 1px solid $grey-80;
+  border-radius: 5px;
+  padding: $space-normal;
+
+  & > .text {
+    margin: 0;
+  }
+
+  & > .footer {
+    margin-top: $space-small;
+    display: flex;
+    justify-content: space-between;
+
+    & > .author::before {
+      content: '@';
+    }
+
+    & > .author {
+      margin: 0;
+    }
+
+    & > .likes {
+      & > .heart {
+        vertical-align: middle;
+        margin-left: 4px;
+        .fill {
+          fill: white;
+        }
+        &.liked {
+          .fill {
+            fill: #ffee1e;
+          }
+        }
+      }
+    }
+  }
+}
+
+.comment-card + .comment-card {
+  margin-top: $space-medium;
+}

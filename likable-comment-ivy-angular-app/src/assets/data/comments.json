@@ -1,0 +1,20 @@
+[
+  {
+    "text": "'This fellow may be very clever.' I said to myself, 'but he is certainly very conceited'.",
+    "author": "dr_watson",
+    "likes": 15,
+    "liked": true
+  },
+  {
+    "text": "Education never ends, Watson. It is a series of lessons with the greatest for the last.",
+    "author": "sherlock_holmes",
+    "likes": 10,
+    "liked": false
+  },
+  {
+    "text": "You remind me of Edgar Allan Poe’s Dupin.  I had no idea that such individuals did exist out of stories.",
+    "author": "dr_watson",
+    "likes": 4,
+    "liked": true
+  }
+]

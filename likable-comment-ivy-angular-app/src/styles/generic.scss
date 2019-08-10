@@ -1,0 +1,31 @@
+/* Generic
+* ==================
+* Generic Properties
+*/
+
+@import 'settings.scss';
+
+body {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font: normal normal $font-weight-normal $font-size-normal 'Open Sans', sans-serif;
+}
+
+body {
+  color: $grey-100;
+  background: $white;
+  font-size: $font-size-normal;
+}
+
