@@ -5,9 +5,7 @@ import { createCustomElement } from '@angular/elements';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule
   ],
@@ -16,8 +14,10 @@ import { AppComponent } from './app.component';
 })
 export class AppModule {
   constructor(private injector: Injector) {
-    const el = createCustomElement(AppComponent, { injector });
+
+  }
+  ngDoBootstrap() {
+    const el = createCustomElement(AppComponent, { injector: this.injector });
     customElements.define('likable-comment', el);
   }
-  ngDoBootstrap() { }
 }

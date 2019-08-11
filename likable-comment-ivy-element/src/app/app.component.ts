@@ -1,4 +1,5 @@
 import { Component, Input, ɵrenderComponent, ɵdetectChanges, OnInit, ElementRef, ViewEncapsulation } from '@angular/core';
+import { LikableCommenComponent } from './likable-comment/likable-comment.component';
 
 @Component({
   selector: 'app-root',
@@ -6,25 +7,49 @@ import { Component, Input, ɵrenderComponent, ɵdetectChanges, OnInit, ElementRe
   styleUrls: ['app.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  @Input () text: string;
-  @Input () author: string;
-  @Input () likes: number;
-  @Input () likedByMe: boolean;
+  component: LikableCommenComponent;
 
-  constructor(private element: ElementRef) { }
+  constructor(public element: ElementRef) {
+    this.component = ɵrenderComponent(LikableCommenComponent, {host: this.element.nativeElement});
+  }
 
-  ngOnInit() {
-    import('./likable-comment/likable-comment.component')
-    .then(({ LikableCommenComponent }) => {
-      const component =  ɵrenderComponent(LikableCommenComponent, {host: this.element.nativeElement});
-      component.text = this.text;
-      component.author = this.author;
-      component.likes = this.likes;
-      component.likedByMe = this.likedByMe;
-      ɵdetectChanges(component);
-    });
+  get text() {
+    return this.component.text;
+  }
+
+  @Input() set text(value: string) {
+    this.component.text = value;
+    ɵdetectChanges(this.component);
+  }
+
+  get author() {
+    return this.component.author;
+  }
+
+  @Input() set author(value: string) {
+    this.component.author = value;
+    ɵdetectChanges(this.component);
+  }
+
+  get likes() {
+    return this.component.likes;
+  }
+
+  @Input() set likes(value: number) {
+    this.component.likes = value;
+    ɵdetectChanges(this.component);
+  }
+
+  get liked() {
+    return this.component.liked;
+  }
+
+  @Input() set liked(value: boolean) {
+    this.component.liked = value;
+    ɵdetectChanges(this.component);
+
   }
 }
 

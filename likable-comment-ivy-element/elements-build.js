@@ -8,6 +8,5 @@ const concat = require('concat');
     './dist/main-es2015.js'
   ];
   await fs.ensureDir('elements');
-  await concat(files, 'elements/likable-comment-element.js');
-  await fs.copyFile('./dist/4-es2015.js', 'elements/4-es2015.js');
+  await concat(files, 'elements/likable-comment-ivy.js');
 })();
