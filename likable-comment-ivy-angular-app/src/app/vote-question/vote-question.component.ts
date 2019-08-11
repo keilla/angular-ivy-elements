@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵrenderComponent, ɵdetectChanges } from '@angular/core';
+import { Component, OnInit, ɵrenderComponent, ɵdetectChanges, ElementRef } from '@angular/core';
 import { CommentService } from '../core/services';
 
 @Component({
@@ -11,7 +11,7 @@ export class VoteQuestionComponent implements OnInit {
   question: string;
   comments;
 
-  constructor(private commentService: CommentService) {
+  constructor(private commentService: CommentService, private element: ElementRef) {
     this.commentService.getComments().subscribe(comments => {
       this.comments = comments;
       this.renderCommentComponent();
@@ -27,7 +27,7 @@ export class VoteQuestionComponent implements OnInit {
     import('./likable-comment/likable-comment.component')
       .then(({ LikableCommentComponent }) => {
         this.comments.forEach(comment => {
-          const comp = ɵrenderComponent(LikableCommentComponent);
+          const comp = ɵrenderComponent(LikableCommentComponent, {host: this.element.nativeElement});
           comp.text = comment.text;
           comp.author = comment.author;
           comp.likes = comment.likes;

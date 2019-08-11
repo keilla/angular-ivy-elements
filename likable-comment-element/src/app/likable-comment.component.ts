@@ -9,5 +9,5 @@ export class LikableCommentComponent {
   @Input() text: string;
   @Input() author: string;
   @Input() likes: number;
-  @Input() likedByMe: boolean;
+  @Input() liked: boolean;
 }
