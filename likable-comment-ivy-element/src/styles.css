@@ -1,0 +1,37 @@
+.comment-card {
+  border: 1px solid #4a4a4a;
+  border-radius: 5px;
+  padding: 16px;
+  font-size: 14px;
+}
+
+.comment-card .text {
+  margin: 0;
+}
+
+.comment-card .footer {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-card .footer .author {
+  margin: 0;
+}
+
+.comment-card .footer .author::before {
+  content: '@';
+}
+
+.comment-card .footer .likes .heart {
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.comment-card .footer .likes .heart .fill {
+  fill: #fff;
+}
+
+.comment-card .footer .likes .heart.liked .fill {
+  fill: #ffee1e;
+}

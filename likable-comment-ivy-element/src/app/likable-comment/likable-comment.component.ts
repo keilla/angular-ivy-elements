@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ivy-likable-comment',
   templateUrl: './likable-comment.component.html',
 })
 export class LikableCommenComponent {
-  @Input() text: string;
+  text: string;
   author: string;
   likes: number;
   liked: boolean;

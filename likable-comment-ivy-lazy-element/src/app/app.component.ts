@@ -1,37 +1,51 @@
 import {
-  Component,
-  Input,
   ɵrenderComponent as renderComponent,
-  ɵdetectChanges as detectChanges,
-  ElementRef,
-  ViewEncapsulation
-}
-from '@angular/core';
+  ɵdetectChanges as detectChanges
+} from '@angular/core';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['app.component.css'],
-  encapsulation: ViewEncapsulation.None
-})
-export class AppComponent {
+export class AppComponent extends HTMLElement {
 
-  @Input() text: string;
-  @Input() author: string;
-  @Input() likes: number;
-  @Input() liked: boolean;
   component: any;
+  text: string;
+  author: string;
+  likes: number;
+  liked: boolean;
 
-  constructor(public element: ElementRef) {
-    import('./likable-comment/likable-comment.component')
-      .then(({ LikableCommenComponent }) => {
-        this.component = renderComponent(LikableCommenComponent, { host: this.element.nativeElement });
-        this.component.text = this.text;
-        this.component.author = this.author;
-        this.component.likes = this.likes;
-        this.component.liked = this.liked;
-        detectChanges(this.component);
-      });
+  constructor() {
+    super();
+    this.renderComponentType();
+  }
+
+  async renderComponentType() {
+    const c = await import('./likable-comment/likable-comment.component');
+    this.component = renderComponent(c.LikableCommenComponent, { host: this });
+    this.component.text = this.text;
+    this.component.author = this.author;
+    this.component.likes = this.likes;
+    this.component.liked = this.liked;
+    detectChanges(this.component);
+  }
+
+  static get observedAttributes() {
+    return ['text', 'author', 'likes', 'liked'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    switch (name) {
+      case 'text':
+        this.text = newValue;
+        break;
+      case 'author':
+        this.author = newValue;
+        break;
+      case 'likes':
+        this.likes = newValue;
+        break;
+      case 'liked':
+        this.liked = newValue;
+        break;
+    }
+
   }
 }
 

@@ -1,54 +1,48 @@
-import { Component, Input, ɵrenderComponent, ɵdetectChanges, OnInit, ElementRef, ViewEncapsulation } from '@angular/core';
+import {
+  ɵrenderComponent as renderComponent,
+  ɵdetectChanges as detectChanges
+} from '@angular/core';
 import { LikableCommenComponent } from './likable-comment/likable-comment.component';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['app.component.css'],
-  encapsulation: ViewEncapsulation.None
-})
-export class AppComponent {
+export class AppComponent extends HTMLElement {
 
   component: LikableCommenComponent;
+  text: string;
+  author: string;
+  likes: number;
+  liked: boolean;
 
-  constructor(public element: ElementRef) {
-    this.component = ɵrenderComponent(LikableCommenComponent, {host: this.element.nativeElement});
+  constructor() {
+    super();
+    setTimeout(() => {
+      this.component = renderComponent(LikableCommenComponent, { host: this });
+      this.component.text = this.text;
+      this.component.author = this.author;
+      this.component.likes = this.likes;
+      this.component.liked = this.liked;
+      detectChanges(this.component);
+    });
   }
 
-  get text() {
-    return this.component.text;
+  static get observedAttributes() {
+    return ['text', 'author', 'likes', 'liked'];
   }
 
-  @Input() set text(value: string) {
-    this.component.text = value;
-    ɵdetectChanges(this.component);
-  }
-
-  get author() {
-    return this.component.author;
-  }
-
-  @Input() set author(value: string) {
-    this.component.author = value;
-    ɵdetectChanges(this.component);
-  }
-
-  get likes() {
-    return this.component.likes;
-  }
-
-  @Input() set likes(value: number) {
-    this.component.likes = value;
-    ɵdetectChanges(this.component);
-  }
-
-  get liked() {
-    return this.component.liked;
-  }
-
-  @Input() set liked(value: boolean) {
-    this.component.liked = value;
-    ɵdetectChanges(this.component);
+  attributeChangedCallback(name, oldValue, newValue) {
+    switch (name) {
+      case 'text':
+        this.text = newValue;
+        break;
+      case 'author':
+        this.author = newValue;
+        break;
+      case 'likes':
+        this.likes = newValue;
+        break;
+      case 'liked':
+        this.liked = newValue;
+        break;
+    }
 
   }
 }
