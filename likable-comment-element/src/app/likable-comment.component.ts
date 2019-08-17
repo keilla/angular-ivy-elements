@@ -10,4 +10,8 @@ export class LikableCommentComponent {
   @Input() author: string;
   @Input() likes: number;
   @Input() liked: boolean;
+
+  toggle() {
+    this.liked = !this.liked;
+  }
 }
