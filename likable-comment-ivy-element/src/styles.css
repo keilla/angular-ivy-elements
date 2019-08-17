@@ -23,15 +23,15 @@
   content: '@';
 }
 
-.comment-card .footer .likes .heart {
+.comment-card .footer .likes .heart:before {
+  content: '\2665';
+  color: #ccc;
+  border-color: #000;
+  font-size: 1.4em;
   vertical-align: middle;
-  margin-left: 4px;
+  padding-left: 4px;
 }
 
-.comment-card .footer .likes .heart .fill {
-  fill: #fff;
-}
-
-.comment-card .footer .likes .heart.liked .fill {
-  fill: #ffee1e;
+.comment-card .footer .likes .heart.liked:before {
+  color: #ffee1e;
 }

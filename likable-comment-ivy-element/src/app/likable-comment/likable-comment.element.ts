@@ -2,9 +2,9 @@ import {
   ɵrenderComponent as renderComponent,
   ɵdetectChanges as detectChanges
 } from '@angular/core';
-import { LikableCommenComponent } from './likable-comment/likable-comment.component';
+import { LikableCommenComponent } from './likable-comment.component';
 
-export class AppComponent extends HTMLElement {
+export class LikableCommentElement extends HTMLElement {
 
   component: LikableCommenComponent;
   text: string;
