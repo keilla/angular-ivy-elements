@@ -23,16 +23,18 @@
     }
 
     & > .likes {
-      & > .heart {
-        vertical-align: middle;
-        margin-left: 4px;
-        .fill {
-          fill: white;
+      & > .heart{
+        &::before {
+          content: '\2665';
+          color: #ccc;
+          border-color: #000;
+          font-size: 1.4em;
+          vertical-align: middle;
+          padding-left: 4px;
         }
-        &.liked {
-          .fill {
-            fill: #ffee1e;
-          }
+
+        &.liked:before {
+          color: #ffee1e;
         }
       }
     }

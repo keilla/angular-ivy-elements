@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ɵdetectChanges as detectChanges, } from '@angular/core';
 
 @Component({
   selector: 'likable-comment',
@@ -12,4 +12,8 @@ export class LikableCommentComponent {
   @Input() likes: number;
   @Input() liked: boolean;
 
+  toggle() {
+    this.liked = !this.liked;
+    detectChanges(this);
+  }
 }
