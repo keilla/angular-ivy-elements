@@ -3,7 +3,7 @@ import {
   ɵdetectChanges as detectChanges
 } from '@angular/core';
 
-export class AppComponent extends HTMLElement {
+export class LikableCommentElement extends HTMLElement {
 
   component: any;
   text: string;
@@ -13,11 +13,11 @@ export class AppComponent extends HTMLElement {
 
   constructor() {
     super();
-    this.renderComponentType();
+    this.renderComponent();
   }
 
-  async renderComponentType() {
-    const c = await import('./likable-comment/likable-comment.component');
+  async renderComponent() {
+    const c = await import('./likable-comment.component');
     this.component = renderComponent(c.LikableCommenComponent, { host: this });
     this.component.text = this.text;
     this.component.author = this.author;
